@@ -24,9 +24,10 @@ export default class PokemonPreview extends React.Component {
           underlayColor='lightgray'
         >
           <View style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+
             }}
           >
             <Image
