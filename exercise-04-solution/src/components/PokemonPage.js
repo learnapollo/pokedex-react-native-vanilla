@@ -43,12 +43,13 @@ class PokemonPage extends React.Component {
 }
 
 const PokemonQuery = gql`query PokemonQuery($id: ID!) {
-  Pokemon(id: $id) {
-    id
-    url
-    name
+    Pokemon(id: $id) {
+      id
+      ... PokemonCardPokemon
+    }
   }
-}`
+  ${pokemonCardFragments.pokemon}
+`
 
 const PokemonPageWithData = graphql(PokemonQuery, {
     options: (ownProps) => {
