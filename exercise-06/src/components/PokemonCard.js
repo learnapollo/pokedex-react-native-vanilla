@@ -14,7 +14,7 @@ export const pokemonCardFragments = {
   `
 }
 
-export default class PokemonCard extends React.Component {
+class PokemonCard extends React.Component {
 
   static propTypes = {
     pokemon: propType(pokemonCardFragments.pokemon).isRequired,
@@ -107,3 +107,5 @@ export default class PokemonCard extends React.Component {
 
   }
 }
+
+export default PokemonCard
