@@ -3,7 +3,8 @@ import { propType } from 'graphql-anywhere'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 
-import { View, Button, TextInput, Image } from 'react-native'
+import { View, TextInput, Image } from 'react-native'
+import Button from './Button'
 
 import { Actions } from 'react-native-router-flux'
 
@@ -41,53 +42,46 @@ class PokemonCard extends React.Component {
     }
 
     return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-        }}
-      >
-        <Image
-          source={{ uri: this.props.pokemon.url }}
-          style={{
-            width: 100,
-            height: 100,
-            resizeMode: 'contain'
-          }}
-        />
-        <View style={{
-          width: 200
-        }}>
+      <View>
+        <View>
           <TextInput
             style={{
-              height: 40,
-              borderColor: 'gray',
-              borderWidth: 1
+              padding: 20,
+              height: 60,
+              fontFamily: 'HelveticaNeue-Light',
             }}
             onChangeText={(name) => this.setState({name})}
             value={this.state.name}
-            placeholder='Image Url'
+            placeholder='Type a name...'
           />
           <TextInput
             style={{
-              height: 40,
-              borderColor: 'gray',
-              borderWidth: 1
+              padding: 20,
+              height: 60,
+              fontFamily: 'HelveticaNeue-Light',
             }}
             onChangeText={(url) => this.setState({url})}
             value={this.state.url}
             placeholder='Image Url'
           />
         </View>
+
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
+            flexDirection: 'column',
+            justifyContent: 'center',
             alignItems: 'center',
             marginTop: 12
           }}
         >
+          <Image
+            source={{ uri: this.props.pokemon.url }}
+            style={{
+              width: 100,
+              height: 100,
+              resizeMode: 'contain'
+            }}
+          />
           <Button
             title='Delete'
             onPress={this.handleDelete}

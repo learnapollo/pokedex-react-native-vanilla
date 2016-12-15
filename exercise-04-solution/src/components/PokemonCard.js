@@ -23,13 +23,35 @@ export default class PokemonCard extends React.Component {
   render () {
 
     return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-        }}
-      >
+      <View>
+        <View>
+          <TextInput
+            style={{
+              padding: 20,
+              height: 60,
+              fontFamily: 'HelveticaNeue-Light',
+            }}
+            editable={false}
+            value={this.props.pokemon.name}
+          />
+          <TextInput
+            style={{
+              padding: 20,
+              height: 60,
+              fontFamily: 'HelveticaNeue-Light',
+            }}
+            editable={false}
+            value={this.props.pokemon.url}
+          />
+        </View>
+        <View
+          style={{
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 12
+          }}
+        >
         <Image
           source={{ uri: this.props.pokemon.url }}
           style={{
@@ -38,27 +60,6 @@ export default class PokemonCard extends React.Component {
             resizeMode: 'contain'
           }}
         />
-        <View style={{
-          width: 200
-        }}>
-          <TextInput
-            style={{
-              height: 40,
-              borderColor: 'gray',
-              borderWidth: 1
-            }}
-            editable={false}
-            value={this.props.pokemon.name}
-          />
-          <TextInput
-            style={{
-              height: 40,
-              borderColor: 'gray',
-              borderWidth: 1
-            }}
-            editable={false}
-            value={this.props.pokemon.url}
-          />
         </View>
       </View>
     )

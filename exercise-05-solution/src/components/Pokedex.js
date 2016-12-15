@@ -1,6 +1,9 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import { ScrollView, View, Image, Text, Button } from 'react-native'
+import { ScrollView, View, Image } from 'react-native'
+import CustomText from './CustomText'
+import Button from './Button'
+
 import gql from 'graphql-tag'
 
 import PokemonPreview from './PokemonPreview'
@@ -19,26 +22,44 @@ class Pokedex extends React.Component {
 
   render () {
     if (this.props.data.loading) {
-      return (<Text style={{marginTop: 64}}>Loading</Text>)
+      return (<CustomText style={{marginTop: 64}}>Loading</CustomText>)
     }
 
     if (this.props.data.error) {
       console.log(this.props.data.error)
-      return (<Text style={{marginTop: 64}}>An unexpexted error occured</Text>)
+      return (<CustomText style={{marginTop: 64}}>An unexpexted error occured</CustomText>)
     }
 
     return (
-      <View style={{flex: 1, backgroundColor: 'gray'}}>
-        <Text style={{marginTop: 64}}>
-          Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
-        </Text>
+      <View style={{flex: 1, backgroundColor: '#f2f2f2'}}>
+      <CustomText
+        style={{
+          marginTop: 64,
+          padding: 16,
+          fontSize: 24,
+          textAlign: 'center'
+        }}
+      >
+        Hey {this.props.data.Trainer.name}!
+      </CustomText>
+      <CustomText
+        style={{
+          padding: 16,
+          paddingTop: 0,
+          fontSize: 18,
+          textAlign: 'center'
+        }}
+      >
+        There are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
+      </CustomText>
         <ScrollView>
           <View
             style={{
               flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              flexWrap: 'wrap',
+              margin: 6,
             }}
           >
             {this.props.data.Trainer.ownedPokemons.map((pokemon) =>

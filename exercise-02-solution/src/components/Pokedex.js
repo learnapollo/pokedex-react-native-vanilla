@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import CustomText from './CustomText'
 import gql from 'graphql-tag'
 
 class Pokedex extends React.Component {
@@ -15,19 +16,36 @@ class Pokedex extends React.Component {
 
   render () {
     if (this.props.data.loading) {
-      return (<Text style={{marginTop: 64}}>Loading</Text>)
+      return (<CustomText style={{marginTop: 64}}>Loading</CustomText>)
     }
 
     if (this.props.data.error) {
       console.log(this.props.data.error)
-      return (<Text style={{marginTop: 64}}>An unexpexted error occured</Text>)
+      return (<CustomText style={{marginTop: 64}}>An unexpexted error occured</CustomText>)
     }
 
     return (
-      <View style={{flex: 1, backgroundColor: 'gray'}}>
-        <Text style={{marginTop: 64}}>
-          Hey {this.props.data.Trainer.name}, there are 0 Pokemons in your pokedex
-        </Text>
+      <View style={{flex: 1, backgroundColor: '#f2f2f2'}}>
+        <CustomText
+          style={{
+            marginTop: 64,
+            padding: 16,
+            fontSize: 24,
+            textAlign: 'center'
+          }}
+        >
+          Hey {this.props.data.Trainer.name}!
+        </CustomText>
+        <CustomText
+          style={{
+            padding: 16,
+            paddingTop: 0,
+            fontSize: 18,
+            textAlign: 'center'
+          }}
+        >
+          There are 0 Pokemons in your pokedex
+        </CustomText>
       </View>
     )
   }

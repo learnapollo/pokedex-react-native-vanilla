@@ -1,7 +1,9 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import { ScrollView, View, Image, Text, Button } from 'react-native'
+import { ScrollView, View, Image } from 'react-native'
 import gql from 'graphql-tag'
+import Button from './Button'
+import CustomText from './CustomText'
 
 import PokemonPreview from './PokemonPreview'
 import { Actions } from 'react-native-router-flux'
@@ -28,17 +30,35 @@ class Pokedex extends React.Component {
     }
 
     return (
-      <View style={{flex: 1, backgroundColor: 'gray'}}>
-        <Text style={{marginTop: 64}}>
-          Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
-        </Text>
+      <View style={{flex: 1, backgroundColor: '#f2f2f2'}}>
+          <CustomText
+            style={{
+              marginTop: 64,
+              padding: 16,
+              fontSize: 24,
+              textAlign: 'center'
+            }}
+          >
+            Hey {this.props.data.Trainer.name}!
+          </CustomText>
+          <CustomText
+            style={{
+              padding: 16,
+              paddingTop: 0,
+              fontSize: 18,
+              textAlign: 'center'
+            }}
+          >
+            There are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
+          </CustomText>
         <ScrollView>
           <View
             style={{
               flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              flexWrap: 'wrap',
+              margin: 6,
             }}
           >
             {this.props.data.Trainer.ownedPokemons.map((pokemon) =>

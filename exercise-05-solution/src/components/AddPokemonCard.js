@@ -2,8 +2,8 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import { View, Image, TextInput, Button } from 'react-native'
-
+import { View, Image, TextInput, Dimensions } from 'react-native'
+import Button from './Button'
 import { Actions } from 'react-native-router-flux'
 
 class AddPokemonCard extends React.Component {
@@ -18,7 +18,7 @@ class AddPokemonCard extends React.Component {
   }
 
   render () {
-
+    const {height, width} = Dimensions.get('window')
     let saveButton = null
     if (this.canSave()) {
       saveButton = <View
@@ -58,13 +58,14 @@ class AddPokemonCard extends React.Component {
         }}
       >
         <View style={{
-          width: 200
+          width: width - 40
         }}>
           <TextInput
             style={{
-              height: 40,
-              borderColor: 'gray',
-              borderWidth: 1
+              marginTop: 20,
+              padding: 20,
+              backgroundColor: 'rgba(0,0,0,.05)',
+              height: 60,
             }}
             onChangeText={(name) => this.setState({name})}
             value={this.state.name}
@@ -72,9 +73,10 @@ class AddPokemonCard extends React.Component {
           />
           <TextInput
             style={{
-              height: 40,
-              borderColor: 'gray',
-              borderWidth: 1
+              marginTop: 20,
+              padding: 20,
+              backgroundColor: 'rgba(0,0,0,.05)',
+              height: 60,
             }}
             onChangeText={(url) => this.setState({url})}
             value={this.state.url}
