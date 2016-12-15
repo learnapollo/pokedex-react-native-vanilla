@@ -2,7 +2,8 @@ import React from 'react'
 import { propType } from 'graphql-anywhere'
 import gql from 'graphql-tag'
 
-import { View, TextInput, Image, Button } from 'react-native'
+import { View, TextInput, Image } from 'react-native'
+import Button from './Button'
 
 export const pokemonCardFragments = {
   pokemon: gql`
@@ -36,13 +37,7 @@ class PokemonCard extends React.Component {
     }
 
     return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-        }}
-      >
+      <View>
         <Image
           source={{ uri: this.props.pokemon.url }}
           style={{
@@ -51,14 +46,12 @@ class PokemonCard extends React.Component {
             resizeMode: 'contain'
           }}
         />
-        <View style={{
-          width: 200
-        }}>
+        <View>
           <TextInput
             style={{
-              height: 40,
-              borderColor: 'gray',
-              borderWidth: 1
+              padding: 20,
+              height: 60,
+              fontFamily: 'HelveticaNeue-Light',
             }}
             onChangeText={(name) => this.setState({name})}
             value={this.state.name}
@@ -66,9 +59,9 @@ class PokemonCard extends React.Component {
           />
           <TextInput
             style={{
-              height: 40,
-              borderColor: 'gray',
-              borderWidth: 1
+              padding: 20,
+              height: 60,
+              fontFamily: 'HelveticaNeue-Light',
             }}
             onChangeText={(url) => this.setState({url})}
             value={this.state.url}
@@ -77,8 +70,8 @@ class PokemonCard extends React.Component {
         </View>
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
+            flexDirection: 'column',
+            justifyContent: 'center',
             alignItems: 'center',
             marginTop: 12
           }}

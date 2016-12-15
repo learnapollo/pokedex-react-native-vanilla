@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, Image, Text, TouchableHighlight } from 'react-native'
+import { View, Image, TouchableHighlight, Dimensions } from 'react-native'
+import CustomText from './CustomText'
 
-import { Actions, ActionConst } from 'react-native-router-flux'
+import { Actions } from 'react-native-router-flux'
 
 export default class PokemonPreview extends React.Component {
 
@@ -11,23 +12,34 @@ export default class PokemonPreview extends React.Component {
 
   render () {
     const pokemonId = this.props.pokemon.id
+    const {height, width} = Dimensions.get('window')
 
     return (
       <View
           style={{
-            flex: 1,
-            margin: 12,
+            margin: 6,
+            height: (width / 2) - 18,
+            width: (width / 2) - 18,
+            backgroundColor: 'white',
+            padding: 16,
           }}
+          shadowColor='rgba(0,0,0,0.25)'
+          shadowOffset={{
+            width: 0,
+            height: 2
+          }}
+          shadowOpacity={0.5}
+          shadowRadius={1}
         >
         <TouchableHighlight
           onPress={() => Actions.pokemonPage({pokemonId})}
           underlayColor='lightgray'
         >
-          <View style={{
+          <View
+            style={{
               flex: 1,
               alignItems: 'center',
-              justifyContent: 'center',
-
+              flexDirection: 'column'
             }}
           >
             <Image
@@ -38,7 +50,12 @@ export default class PokemonPreview extends React.Component {
                 resizeMode: 'contain'
               }}
             />
-            <Text>{this.props.pokemon.name}</Text>
+            <CustomText
+              style={{
+                height: 20,
+                marginTop: 20
+              }}
+            >{this.props.pokemon.name}</CustomText>
           </View>
         </TouchableHighlight>
       </View>
