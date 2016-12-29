@@ -55,7 +55,7 @@ class PokemonCard extends React.Component {
             }}
             onChangeText={(name) => this.setState({name})}
             value={this.state.name}
-            placeholder='Image Url'
+            placeholder='Type a name...'
           />
           <TextInput
             style={{
