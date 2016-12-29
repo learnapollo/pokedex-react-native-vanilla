@@ -23,7 +23,7 @@ class Pokedex extends React.Component {
 
     if (this.props.data.error) {
       console.log(this.props.data.error)
-      return (<Text style={{marginTop: 64}}>An unexpexted error occured</Text>)
+      return (<Text style={{marginTop: 64}}>An unexpexted error occurred</Text>)
     }
 
     return (
