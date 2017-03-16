@@ -7,7 +7,7 @@ import { View, TextInput, Image } from 'react-native'
 export default class PokemonCard extends React.Component {
 
   static propTypes = {
-    pokemon: React.propTypes.object.isRequired,
+    pokemon: React.PropTypes.object.isRequired,
   }
 
   render () {
