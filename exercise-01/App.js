@@ -12,9 +12,7 @@ const scenes = Actions.create(
 export default class App extends React.Component {
   render() {
     return (
-      <ApolloProvider client={client}>
         <Router scenes={scenes}/>
-      </ApolloProvider>
     )
   }
 }
