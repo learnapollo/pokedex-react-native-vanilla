@@ -6,7 +6,7 @@ import { Actions, Scene, Router } from 'react-native-router-flux'
 import Pokedex from './components/Pokedex'
 
 const client = new ApolloClient({
-  networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/ciwqeedsn1ha801256fhgve5f'}),
+  networkInterface: createNetworkInterface({ uri: 'https://api.graph.cool/simple/v1/__PROJECT_ID__'}),
 })
 
 const scenes = Actions.create(

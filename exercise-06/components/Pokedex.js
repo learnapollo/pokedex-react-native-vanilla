@@ -93,7 +93,7 @@ const TrainerQuery = gql`query TrainerQuery($name: String!) {
 const PokedexWithData = graphql(TrainerQuery, {
   options: {
     variables: {
-      name: 'Johannes Schickling'
+      name: '__NAME__'
     },
     fetchPolicy: 'cache-and-network',
   }

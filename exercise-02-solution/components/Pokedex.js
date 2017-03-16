@@ -52,7 +52,7 @@ class Pokedex extends React.Component {
 }
 
 const TrainerQuery = gql`query TrainerQuery {
-  Trainer(name: "Johannes Schickling") {
+  Trainer(name: "__NAME__") {
      name
    }
  }`
